@@ -4,8 +4,8 @@ report:
     keyring: false          # ← ★ これを追加して Keyring を使わない
 
     subject: "urlwatch – {count} changes detected"
-    from: "your_address@example.com"
-    to:   "your_address@example.com"
+    from: !ENV ${URLWATCH_EMAIL_USER}
+    to:   !ENV ${URLWATCH_EMAIL_USER}
 
     smtp:
       host: smtp.gmail.com
