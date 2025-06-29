@@ -16,13 +16,13 @@ report:
   email:
     enabled: true
     method: smtp
-    from:    "${MAIL_USER}"
-    to:      "${MAIL_USER}"
+    from:    "${secrets.MAIL_USER}"
+    to:      "${secrets.MAIL_USER}"
 
     smtp:
       host:     smtp.gmail.com
       auth:     true
       port:     587
       starttls: true
-      user:     "${MAIL_USER}"
-      insecure_password: "${MAIL_PASS}"
+      user:     "${secrets.MAIL_USER}"
+      insecure_password: "${secrets.MAIL_PASS}"
