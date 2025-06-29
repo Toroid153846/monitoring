@@ -109,4 +109,8 @@ jobs:
           mkdir -p ~/.config/urlwatch
           cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
           cp urls.yaml     ~/.config/urlwatch/urls.yaml
+          echo "---- GENERATED urlwatch.yaml ----"
+          sed -e 's/\(insecure_password:\).*/\1 ****/' \
+              ~/.config/urlwatch/urlwatch.yaml
+          echo "-----------------------------------"
           urlwatch --config ~/.config/urlwatch/urlwatch.yaml

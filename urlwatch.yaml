@@ -16,13 +16,13 @@ report:
   email:
     enabled: true
     method: smtp
-    from:    "${secrets.MAIL_USER}"
-    to:      "${secrets.MAIL_USER}"
+    from:    "${URLWATCH_EMAIL_USER}"
+    to:      "${URLWATCH_EMAIL_USER}"
 
     smtp:
       host:     smtp.gmail.com
       auth:     true
       port:     587
       starttls: true
-      user:     "${secrets.MAIL_USER}"
-      insecure_password: "${secrets.MAIL_PASS}"
+      user:     "${URLWATCH_EMAIL_USER}"
+      insecure_password: "${URLWATCH_EMAIL_PASS}"
