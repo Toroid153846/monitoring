@@ -15,5 +15,4 @@ name: "google"
 url:  "https://www.google.com/?gl=us&hl=jp&gws_rd=cr&pws=0"
 filter:
   - html2text
-  - re.findall: '(?s)プライバシー(.*?)検索設定'
   - strip
