@@ -16,5 +16,3 @@ url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 kind: url
 name: "google"
 url:  "https://www.google.com/"
-filter:
-  - regex: "datetime: (.*)"
