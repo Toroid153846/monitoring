@@ -14,5 +14,5 @@ name: "google"
 url:  "https://www.google.com/?gl=us&hl=jp&gws_rd=cr&pws=0"
 filter:
   - html2text
-  - re.findall: '(?s)Google 検索は次の言語でもご利用いただけます:(.*?)検索の仕組み'
+  - re.findall: '(?s)プライバシー(.*?)検索設定'
   - strip
