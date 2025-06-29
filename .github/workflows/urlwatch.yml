@@ -31,4 +31,4 @@ jobs:
         env:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
-        run: urlwatch --quiet
+        run: urlwatch
