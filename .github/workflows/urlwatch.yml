@@ -23,31 +23,53 @@ jobs:
           python -m pip install --upgrade urlwatch keyrings.alt playwright
           playwright install chromium
 
-      - name: Run urlwatch
+      # - name: Run urlwatch
+      #   env:
+      #     URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
+      #     URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
+      #   run: |
+      #     # 1) 設定ディレクトリを作成
+      #     mkdir -p ~/.config/urlwatch
+
+      #     # 2) 監視リストをコピー
+      #     cp urls.yaml ~/.config/urlwatch/urls.yaml
+
+      #     # 3) report: 形式で設定ファイルを echo で生成
+      #     echo 'report:'                                                    > ~/.config/urlwatch/urlwatch.yaml
+      #     echo '  email:'                                                   >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '    enabled: true'                                          >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '    method: smtp'                                           >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '    from:    "'"${URLWATCH_EMAIL_USER}"'"'                  >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '    to:      "'"${URLWATCH_EMAIL_USER}"'"'                  >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '    smtp:'                                                  >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '      host:           smtp.gmail.com'                       >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '      auth:           true'                                 >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '      port:           587'                                  >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo '      starttls:       true'                                >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo "      user:           ${URLWATCH_EMAIL_USER}"              >> ~/.config/urlwatch/urlwatch.yaml
+      #     echo "      insecure_password: ${URLWATCH_EMAIL_PASS}"           >> ~/.config/urlwatch/urlwatch.yaml
+
+      #     # 4) テスト送信で SMTP 動作を確認
+      #     urlwatch --config ~/.config/urlwatch/urlwatch.yaml
+      - name: Run urlwatch with static config
         env:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
-          # 1) 設定ディレクトリを作成
+          # 設定ディレクトリを作成
           mkdir -p ~/.config/urlwatch
 
-          # 2) 監視リストをコピー
+          # 雛形をコピー
+          cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
+
+          # プレースホルダーを環境変数で置き換え
+          sed -i \
+            -e 's|\${URLWATCH_EMAIL_USER}|'"$URLWATCH_EMAIL_USER"'|g' \
+            -e 's|\${URLWATCH_EMAIL_PASS}|'"$URLWATCH_EMAIL_PASS"'|g' \
+            ~/.config/urlwatch/urlwatch.yaml
+
+          # 監視リストをコピー
           cp urls.yaml ~/.config/urlwatch/urls.yaml
 
-          # 3) report: 形式で設定ファイルを echo で生成
-          echo 'report:'                                                    > ~/.config/urlwatch/urlwatch.yaml
-          echo '  email:'                                                   >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    enabled: true'                                          >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    method: smtp'                                           >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    from:    "'"${URLWATCH_EMAIL_USER}"'"'                  >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    to:      "'"${URLWATCH_EMAIL_USER}"'"'                  >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    smtp:'                                                  >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      host:           smtp.gmail.com'                       >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      auth:           true'                                 >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      port:           587'                                  >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      starttls:       true'                                >> ~/.config/urlwatch/urlwatch.yaml
-          echo "      user:           ${URLWATCH_EMAIL_USER}"              >> ~/.config/urlwatch/urlwatch.yaml
-          echo "      insecure_password: ${URLWATCH_EMAIL_PASS}"           >> ~/.config/urlwatch/urlwatch.yaml
-
-          # 4) テスト送信で SMTP 動作を確認
+          # 実行（差分あるものだけメール送信）
           urlwatch --config ~/.config/urlwatch/urlwatch.yaml

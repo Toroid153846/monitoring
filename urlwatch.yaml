@@ -1,14 +1,28 @@
-report:
+# report:
+#   email:
+#     enabled: true
+#     keyring: false
+#     subject: "urlwatch – {count} changes detected"
+#     from:    "toroid153846@gmail.com"
+#     to:      "toroid153846@gmail.com"
+
+#     smtp:
+#       host:     smtp.gmail.com
+#       port:     587
+#       starttls: true
+#       user:     "${URLWATCH_EMAIL_USER}"
+#       password: "${URLWATCH_EMAIL_PASS}"
+reporters:
   email:
     enabled: true
-    keyring: false
-    subject: "urlwatch – {count} changes detected"
-    from:    "toroid153846@gmail.com"
-    to:      "toroid153846@gmail.com"
+    method: smtp
+    from:    "${URLWATCH_EMAIL_USER}"
+    to:      "${URLWATCH_EMAIL_USER}"
 
     smtp:
       host:     smtp.gmail.com
+      auth:     true
       port:     587
       starttls: true
       user:     "${URLWATCH_EMAIL_USER}"
-      password: "${URLWATCH_EMAIL_PASS}"
+      insecure_password: "${URLWATCH_EMAIL_PASS}"
