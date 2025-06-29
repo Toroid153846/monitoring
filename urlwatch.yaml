@@ -16,13 +16,13 @@ report:
   email:
     enabled: true
     method: smtp
-    from:    "toroid153846@gmail.com"
-    to:      "toroid153846@gmail.com"
+    from:    "${MAIL_USER}"
+    to:      "${MAIL_USER}"
 
     smtp:
       host:     smtp.gmail.com
       auth:     true
       port:     587
       starttls: true
-      user:     "${URLWATCH_EMAIL_USER}"
-      insecure_password: "${URLWATCH_EMAIL_PASS}"
+      user:     "${MAIL_USER}"
+      insecure_password: "${MAIL_PASS}"
