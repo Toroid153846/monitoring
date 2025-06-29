@@ -9,8 +9,8 @@ url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 filter: []
 ---
 kind: url
-name: "google"
-url:  "https://www.google.com/?hl=ja&gl=jp&q="
+name: "崩壊世界の魔法杖職人"
+url:  "https://ncode.syosetu.com/n8281jr/?p=2"
 filter:
   - html2text
- # - re.findall: '(?s)広告ビジネス(.*?)プライバシー'
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
