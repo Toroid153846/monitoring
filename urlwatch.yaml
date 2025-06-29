@@ -1,12 +1,18 @@
-# urlwatch.yaml  ← 既にあれば追記、無ければ新規
 reporters:
   email:
-    enabled: true            # ← ここが true であること！
-    method: smtp
-    host: smtp.gmail.com
-    port: 587
-    tls: true
-    user: "${URLWATCH_EMAIL_USER}"
-    password: "${URLWATCH_EMAIL_PASS}"
+    enabled: true
+
+    # 送信/受信アドレス
     from: "your_address@example.com"
     to:   "your_address@example.com"
+
+    # 件名テンプレート（お好みで）
+    subject: "urlwatch – {count} changes detected"
+
+    # SMTP の詳細は「smtp:」ブロックにまとめて記述
+    smtp:
+      host: smtp.gmail.com
+      port: 587
+      starttls: true          # ← TLS を使う場合は starttls
+      user: "${URLWATCH_EMAIL_USER}"
+      password: "${URLWATCH_EMAIL_PASS}"
