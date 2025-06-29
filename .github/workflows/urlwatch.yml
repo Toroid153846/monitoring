@@ -101,16 +101,25 @@ jobs:
           restore-keys: |
             urlwatch-db-
 
-      - name: Run urlwatch
+      - name: Run urlwatch with static config
         env:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
+          # 設定ディレクトリ作成
           mkdir -p ~/.config/urlwatch
+
+          # 雛形をコピー
           cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
-          cp urls.yaml     ~/.config/urlwatch/urls.yaml
-          echo "---- GENERATED urlwatch.yaml ----"
-          sed -e 's/\(insecure_password:\).*/\1 ****/' \
-              ~/.config/urlwatch/urlwatch.yaml
-          echo "-----------------------------------"
+
+          # プレースホルダーを環境変数で一気に置換
+          sed -i \
+            -e 's|\${URLWATCH_EMAIL_USER}|'"$URLWATCH_EMAIL_USER"'|g' \
+            -e 's|\${URLWATCH_EMAIL_PASS}|'"$URLWATCH_EMAIL_PASS"'|g' \
+            ~/.config/urlwatch/urlwatch.yaml
+
+          # 監視リストをコピー
+          cp urls.yaml ~/.config/urlwatch/urls.yaml
+
+          # 差分あるものだけメール送信
           urlwatch --config ~/.config/urlwatch/urlwatch.yaml
