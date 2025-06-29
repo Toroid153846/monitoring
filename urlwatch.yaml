@@ -12,7 +12,7 @@
 #       starttls: true
 #       user:     "${URLWATCH_EMAIL_USER}"
 #       password: "${URLWATCH_EMAIL_PASS}"
-reporters:
+report:
   email:
     enabled: true
     method: smtp
