@@ -1,18 +1,15 @@
-report:                       # ← ここが単数形の “report”！
+report:
   email:
     enabled: true
+    keyring: false          # ← ★ これを追加して Keyring を使わない
 
-    # 件名テンプレート（任意）
     subject: "urlwatch – {count} changes detected"
-
-    # 送信・受信アドレス
     from: "your_address@example.com"
     to:   "your_address@example.com"
 
-    # SMTP 設定をまとめる
     smtp:
       host: smtp.gmail.com
       port: 587
-      starttls: true          # TLS を使う場合は starttls
-      user: "${URLWATCH_EMAIL_USER}"
-      password: "${URLWATCH_EMAIL_PASS}"
+      starttls: true
+      user: !ENV ${URLWATCH_EMAIL_USER}      # ← 環境変数をそのまま利用
+      password: !ENV ${URLWATCH_EMAIL_PASS}  # ← 同上
