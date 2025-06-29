@@ -50,4 +50,4 @@ jobs:
           echo "      insecure_password: ${URLWATCH_EMAIL_PASS}"           >> ~/.config/urlwatch/urlwatch.yaml
 
           # 4) テスト送信で SMTP 動作を確認
-          urlwatch --test-reporter email --config ~/.config/urlwatch/urlwatch.yaml
+          urlwatch --config ~/.config/urlwatch/urlwatch.yaml
