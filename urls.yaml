@@ -1,7 +1,7 @@
 # ドキュメント1
 kind: url
-name: "研究室サイト 更新情報"
-url:  "https://example.t.u-tokyo.ac.jp/news.html"
+name: "Jump+"
+url:  "https://shonenjumpplus.com/"
 filter:
   - css:      { selector: "ul.news" }
   - html2text
@@ -9,8 +9,8 @@ filter:
 ---
 # ドキュメント2
 kind: url
-name: "ブログトップ"
-url:  "https://blog.example.com/"
+name: "はてなアンテナ"
+url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 ---
 # ドキュメント3
 kind: url
