@@ -1,43 +1,52 @@
 name: urlwatch
 
 on:
-  schedule:                # 30 分おきに実行（UTC）
-    - cron: '*/30 * * * *'
-  workflow_dispatch:       # 手動実行ボタン
+  schedule:
+    - cron: '*/30 * * * *'    # 30分おき（UTC）
+  workflow_dispatch:         # 手動実行ボタン
 
 jobs:
   run:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install urlwatch & Playwright
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade urlwatch playwright
-          python -m pip install --no-cache-dir keyrings.alt
-          playwright install chromium      # JS が不要ならこの行は削除可
-
-      - uses: actions/cache@v4            # 差分 DB をキャッシュ
-        with:
-          path: ~/.cache/urlwatch
-          key: db-${{ github.run_id }}
+          python -m pip install --upgrade urlwatch keyrings.alt playwright
+          playwright install chromium
 
       - name: Run urlwatch
         env:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
-          # 設定フォルダを用意
+          # 1) 設定フォルダを作成
           mkdir -p ~/.config/urlwatch
-          # リポジトリの設定ファイルをコピー
+          # 2) 監視リストをコピー
           cp urls.yaml ~/.config/urlwatch/urls.yaml
-          cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
-          # 実行
-          urlwatch --test-reporter email
 
+          # 3) 設定ファイルを１行ずつ組み立て
+          echo 'report:'                                                     > ~/.config/urlwatch/urlwatch.yaml
+          echo '  email:'                                                    >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    enabled: true'                                           >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    keyring: false'                                          >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    subject: "urlwatch – {count} changes detected"'          >> ~/.config/urlwatch/urlwatch.yaml
+          echo "    from:     \"${URLWATCH_EMAIL_USER}\""                    >> ~/.config/urlwatch/urlwatch.yaml
+          echo "    to:       \"${URLWATCH_EMAIL_USER}\""                    >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    smtp:'                                                   >> ~/.config/urlwatch/urlwatch.yaml
+          echo '      host:      smtp.gmail.com'                             >> ~/.config/urlwatch/urlwatch.yaml
+          echo '      port:      587'                                        >> ~/.config/urlwatch/urlwatch.yaml
+          echo '      starttls:  true'                                       >> ~/.config/urlwatch/urlwatch.yaml
+          echo "      user:      \"${URLWATCH_EMAIL_USER}\""                 >> ~/.config/urlwatch/urlwatch.yaml
+          echo "      password:  \"${URLWATCH_EMAIL_PASS}\""                 >> ~/.config/urlwatch/urlwatch.yaml
+
+          # 4) テストレポーターで必ずメール送信を試す
+          urlwatch --test-reporter email
