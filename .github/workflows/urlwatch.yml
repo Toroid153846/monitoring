@@ -34,7 +34,7 @@ jobs:
           cp urls.yaml ~/.config/urlwatch/urls.yaml
 
           # 3) urlwatch.yaml を１行ずつ構築
-          echo 'reporters:'                                                  > ~/.config/urlwatch/urlwatch.yaml
+          echo 'report:'                                                  > ~/.config/urlwatch/urlwatch.yaml
           echo '  email:'                                                    >> ~/.config/urlwatch/urlwatch.yaml
           echo '    enabled: true'                                           >> ~/.config/urlwatch/urlwatch.yaml
           echo '    keyring: false'                                          >> ~/.config/urlwatch/urlwatch.yaml
