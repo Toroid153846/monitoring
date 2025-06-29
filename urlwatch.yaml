@@ -1,0 +1,12 @@
+# urlwatch.yaml  ← 既にあれば追記、無ければ新規
+reporters:
+  email:
+    enabled: true            # ← ここが true であること！
+    method: smtp
+    host: smtp.gmail.com
+    port: 587
+    tls: true
+    user: "${URLWATCH_EMAIL_USER}"
+    password: "${URLWATCH_EMAIL_PASS}"
+    from: "your_address@example.com"
+    to:   "your_address@example.com"
