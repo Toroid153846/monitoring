@@ -7,6 +7,7 @@
 kind: url
 name: "はてなアンテナ"
 url:  "https://a.hatena.ne.jp/toroid153846/checklist"
+filter: []
 ---
 # ドキュメント3
 kind: url
