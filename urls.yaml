@@ -13,4 +13,5 @@ filter: []
 kind: url
 name: "google"
 url:  "https://www.google.com/?gl=us&hl=jp&gws_rd=cr&pws=0"
-filter: []
+filter:
+  - html2text
