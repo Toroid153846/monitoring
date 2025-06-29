@@ -13,4 +13,4 @@ name: "google"
 url:  "https://www.google.com/?hl=ja&gl=jp&q="
 filter:
   - html2text
-  # - re.findall: '(?s)広告ビジネス(.*?)プライバシー'
+# - re.findall: '(?s)広告ビジネス(.*?)プライバシー'
