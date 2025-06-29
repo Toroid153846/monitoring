@@ -51,6 +51,19 @@ jobs:
 
       #     # 4) テスト送信で SMTP 動作を確認
       #     urlwatch --config ~/.config/urlwatch/urlwatch.yaml
+      - name: Cache urlwatch DB
+        uses: actions/cache@v4
+        with:
+          # URLWatch の差分DB は ~/.cache/urlwatch/db.sqlite3 に入るので、
+          # ディレクトリ全体をキャッシュします
+          path: ~/.cache/urlwatch
+          # キャッシュキーは安定的な文字列にし、
+          # restore-keys で“同じプレフィックス”を指定すると
+          # 最新のキャッシュが必ず戻ってきます
+          key: urlwatch-db-${{ runner.os }}
+        restore-keys: |
+          urlwatch-db-
+
       - name: Run urlwatch with static config
         env:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
