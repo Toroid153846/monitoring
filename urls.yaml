@@ -2,16 +2,15 @@
 # kind: url
 # name: "Jump+"
 # url:  "https://shonenjumpplus.com/"
-# ---
-# ドキュメント2
+---
 kind: url
 name: "はてなアンテナ"
 url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 filter: []
 ---
-# ドキュメント3
 kind: url
 name: "google"
-url:  "https://www.google.com/?gl=us&hl=jp&gws_rd=cr&pws=0"
+url:  "https://www.google.com/?hl=ja&gl=jp&q="
 filter:
   - html2text
+  - re.findall: '(?s)広告ビジネス(.*?)プライバシー'
