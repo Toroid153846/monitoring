@@ -31,24 +31,23 @@ jobs:
           # 1) 設定フォルダを作成
           mkdir -p ~/.config/urlwatch
 
-          # 2) 監視対象リストをコピー
+          # 2) 監視リストをコピー
           cp urls.yaml ~/.config/urlwatch/urls.yaml
 
-          # 3) 設定ファイルを echo で１行ずつ構築
-          echo 'report:'                                                    > ~/.config/urlwatch/urlwatch.yaml
-          echo '  email:'                                                   >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    enabled: true'                                          >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    keyring: false'                                         >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    subject: "urlwatch – {count} changes detected"'         >> ~/.config/urlwatch/urlwatch.yaml
-          echo "    from:    \"${URLWATCH_EMAIL_USER}\""                    >> ~/.config/urlwatch/urlwatch.yaml
-          echo "    to:      \"${URLWATCH_EMAIL_USER}\""                    >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    smtp:'                                                  >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      host:     smtp.gmail.com'                             >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      port:     587'                                        >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      starttls: true'                                       >> ~/.config/urlwatch/urlwatch.yaml
-          echo "      user:     \"${URLWATCH_EMAIL_USER}\""                 >> ~/.config/urlwatch/urlwatch.yaml
-          echo "      password: \"${URLWATCH_EMAIL_PASS}\""                 >> ~/.config/urlwatch/urlwatch.yaml
+          # 3) reporters: 形式で設定ファイルを echo で生成
+          echo 'reporters:'                                                  > ~/.config/urlwatch/urlwatch.yaml
+          echo '  email:'                                                    >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    enabled: true'                                           >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    keyring: false'                                          >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    subject: "urlwatch – {count} changes detected"'          >> ~/.config/urlwatch/urlwatch.yaml
+          echo "    from:    \"${URLWATCH_EMAIL_USER}\""                     >> ~/.config/urlwatch/urlwatch.yaml
+          echo "    to:      \"${URLWATCH_EMAIL_USER}\""                     >> ~/.config/urlwatch/urlwatch.yaml
+          echo '    smtp:'                                                   >> ~/.config/urlwatch/urlwatch.yaml
+          echo '      host:     smtp.gmail.com'                              >> ~/.config/urlwatch/urlwatch.yaml
+          echo '      port:     587'                                         >> ~/.config/urlwatch/urlwatch.yaml
+          echo '      starttls: true'                                        >> ~/.config/urlwatch/urlwatch.yaml
+          echo "      user:     \"${URLWATCH_EMAIL_USER}\""                  >> ~/.config/urlwatch/urlwatch.yaml
+          echo "      password: \"${URLWATCH_EMAIL_PASS}\""                  >> ~/.config/urlwatch/urlwatch.yaml
 
-          # 4) テスト送信で SMTP 設定を確認
-          urlwatch --test-reporter email \
-            --config ~/.config/urlwatch/urlwatch.yaml
+          # 4) テスト送信で SMTP 動作を確認
+          urlwatch --test-reporter email --config ~/.config/urlwatch/urlwatch.yaml
