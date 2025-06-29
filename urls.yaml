@@ -14,7 +14,7 @@ url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 ---
 # ドキュメント3
 kind: url
-name: "uuid"
-url:  "https://httpbin.org/uuid"
+name: "wikipedia"
+url:  "https://en.wikipedia.org/wiki/Special:Random"
 filter:
   - regex: "datetime: (.*)"
