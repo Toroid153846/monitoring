@@ -4,27 +4,15 @@
 # url:  "https://shonenjumpplus.com/"
 # ---
 # ドキュメント2
-# kind: url
-# name: "はてなアンテナ"
-# url:  "https://a.hatena.ne.jp/toroid153846/checklist"
-# ---
-# # ドキュメント3
-# kind: url
-# name: "google"
-# url:  "https://www.google.com/?gl=us&hl=jp&gws_rd=cr&pws=0"
-# filter:
-#   - html2text
-#   - re.findall: '(?s)プライバシー(.*?)検索設定'
-#   - strip
-- kind: url
-  name: "はてなアンテナ"
-  url:  "https://a.hatena.ne.jp/toroid153846/checklist"
-  filter: []     # フィルター不要なら必ず空リスト
-
-- kind: url
-  name: "google"
-  url:  "https://www.google.com/?gl=us&hl=jp&pws=0"
-  filter:
-    - html2text
-    - re.findall: '(?s)プライバシー(.*?)検索設定'
-    - strip
+kind: url
+name: "はてなアンテナ"
+url:  "https://a.hatena.ne.jp/toroid153846/checklist"
+---
+# ドキュメント3
+kind: url
+name: "google"
+url:  "https://www.google.com/?gl=us&hl=jp&gws_rd=cr&pws=0"
+filter:
+  - html2text
+  - re.findall: '(?s)プライバシー(.*?)検索設定'
+  - strip
