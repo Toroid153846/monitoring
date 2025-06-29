@@ -38,5 +38,5 @@ jobs:
           cp urls.yaml ~/.config/urlwatch/urls.yaml
           cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
           # 実行
-          urlwatch
+          urlwatch --test-reporter email
 
