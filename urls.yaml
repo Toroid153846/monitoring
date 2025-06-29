@@ -1,8 +1,8 @@
-# ドキュメント1
-kind: url
-name: "Jump+"
-url:  "https://shonenjumpplus.com/"
----
+# # ドキュメント1
+# kind: url
+# name: "Jump+"
+# url:  "https://shonenjumpplus.com/"
+# ---
 # ドキュメント2
 kind: url
 name: "はてなアンテナ"
@@ -14,12 +14,13 @@ name: "google"
 url:  "https://www.google.com/"
 filter:
   - html2text
-  - python: |
-        import re
-        # data はバイト列か文字列で渡されるので文字列に統一
-        text = data.decode('utf-8', errors='ignore') if isinstance(data, (bytes,bytearray)) else data
-        # "Googleについて" と "ストア" の間を最短マッチ
-        m = re.search(r'Googleについて(.*?)ストア', text, flags=re.S)
-        return m.group(1) if m else ''
+  - script: |
+      import re
+      # data は bytes か str で渡されるので文字列に統一
+      text = data.decode('utf-8', errors='ignore') \
+             if isinstance(data, (bytes, bytearray)) else data
+      # "Googleについて" と "ストア" の間を最短マッチ
+      m = re.search(r'Googleについて(.*?)ストア', text, flags=re.S)
+      return m.group(1) if m else ''
 
   - strip
