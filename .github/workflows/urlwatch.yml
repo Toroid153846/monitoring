@@ -174,3 +174,4 @@ jobs:
           git add db/db.sqlite
           git commit -m "Update urlwatch DB" || echo "Nothing to commit"
           git push
+          git pull --rebase origin main
