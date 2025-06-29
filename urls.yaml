@@ -1,20 +1,20 @@
-# 1件目
-- kind: url
-  name: "研究室サイト 更新情報"
-  url:  "https://example.t.u-tokyo.ac.jp/news.html"
-  filter:
-    - css:      { selector: "ul.news" }
-    - html2text
-    - strip
-
-# 2件目
-- kind: url
-  name: "ブログトップ"
-  url:  "https://blog.example.com/"
-
-# 3件目（時計APIテスト）
-- kind: url
-  name: "時計APIテスト"
-  url:  "https://worldtimeapi.org/api/timezone/Etc/UTC.txt"
-  filter:
-    - regex: "datetime: (.*)"
+# ドキュメント1
+kind: url
+name: "研究室サイト 更新情報"
+url:  "https://example.t.u-tokyo.ac.jp/news.html"
+filter:
+  - css:      { selector: "ul.news" }
+  - html2text
+  - strip
+---
+# ドキュメント2
+kind: url
+name: "ブログトップ"
+url:  "https://blog.example.com/"
+---
+# ドキュメント3
+kind: url
+name: "時計APIテスト"
+url:  "https://worldtimeapi.org/api/timezone/Etc/UTC.txt"
+filter:
+  - regex: "datetime: (.*)"
