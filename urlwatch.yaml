@@ -1,15 +1,18 @@
 report:
   email:
     enabled: true
-    keyring: false          # ← ★ これを追加して Keyring を使わない
+    keyring: false            # ← Keyring は使わない
 
+    # 件名テンプレート（任意）
     subject: "urlwatch – {count} changes detected"
-    from: !ENV ${URLWATCH_EMAIL_USER}
-    to:   !ENV ${URLWATCH_EMAIL_USER}
+
+    # 送信者＝SMTPユーザー（※自分の Gmail アドレスなど）
+    from: "kokorokitano0819@gmail.com"
+    to:   "kokorokitano0819@gmail.com"     # 自分宛だけなら同じで OK
 
     smtp:
       host: smtp.gmail.com
       port: 587
       starttls: true
-      user: !ENV ${URLWATCH_EMAIL_USER}      # ← 環境変数をそのまま利用
-      password: !ENV ${URLWATCH_EMAIL_PASS}  # ← 同上
+      user: "kokorokitano0819@gmail.com"   # 送信者と同じアドレスを文字列で
+      password: "${URLWATCH_EMAIL_PASS}"   # ← Secrets から渡す
