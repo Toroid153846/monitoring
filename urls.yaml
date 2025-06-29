@@ -14,5 +14,5 @@ name: "google"
 url:  "https://www.google.com/"
 filter:
   - html2text
-  - re.findall: '(?s)Googleについて(.*?)ストア'
+  - re.findall: '(?s)ストア(.*?)画像'
   - strip
