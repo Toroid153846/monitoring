@@ -14,7 +14,7 @@ url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 ---
 # ドキュメント3
 kind: url
-name: "時計APIテスト"
-url:  "https://worldtimeapi.org/api/timezone/Etc/UTC.txt"
+name: "uuid"
+url:  "https://httpbin.org/uuid"
 filter:
   - regex: "datetime: (.*)"
