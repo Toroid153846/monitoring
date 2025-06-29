@@ -51,38 +51,62 @@ jobs:
 
       #     # 4) テスト送信で SMTP 動作を確認
       #     urlwatch --config ~/.config/urlwatch/urlwatch.yaml
+      # - name: Cache urlwatch DB
+      #   uses: actions/cache@v4
+      #   with:
+      #     # URLWatch の差分DB は ~/.cache/urlwatch/db.sqlite3 に入るので、
+      #     # ディレクトリ全体をキャッシュします
+      #     path: ~/.cache/urlwatch
+      #     # キャッシュキーは安定的な文字列にし、
+      #     # restore-keys で“同じプレフィックス”を指定すると
+      #     # 最新のキャッシュが必ず戻ってきます
+      #     key: urlwatch-db-${{ runner.os }}
+      #   restore-keys: |
+      #     urlwatch-db-
+
+      # - name: Run urlwatch with static config
+      #   env:
+      #     URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
+      #     URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
+      #   run: |
+      #     # 設定ディレクトリを作成
+      #     mkdir -p ~/.config/urlwatch
+
+      #     # 雛形をコピー
+      #     cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
+
+      #     # プレースホルダーを環境変数で置き換え
+      #     sed -i \
+      #       -e 's|\${URLWATCH_EMAIL_USER}|'"$URLWATCH_EMAIL_USER"'|g' \
+      #       -e 's|\${URLWATCH_EMAIL_PASS}|'"$URLWATCH_EMAIL_PASS"'|g' \
+      #       ~/.config/urlwatch/urlwatch.yaml
+
+      #     # 監視リストをコピー
+      #     cp urls.yaml ~/.config/urlwatch/urls.yaml
+
+      #     # 実行（差分あるものだけメール送信）
+      #     urlwatch --config ~/.config/urlwatch/urlwatch.yaml
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade urlwatch
+
       - name: Cache urlwatch DB
         uses: actions/cache@v4
         with:
-          # URLWatch の差分DB は ~/.cache/urlwatch/db.sqlite3 に入るので、
-          # ディレクトリ全体をキャッシュします
+          # URLWatch の差分DB を丸ごとキャッシュ
           path: ~/.cache/urlwatch
-          # キャッシュキーは安定的な文字列にし、
-          # restore-keys で“同じプレフィックス”を指定すると
-          # 最新のキャッシュが必ず戻ってきます
+          # キャッシュキーは固定値に runner.os を付加
           key: urlwatch-db-${{ runner.os }}
-        restore-keys: |
-          urlwatch-db-
+          # 同じプレフィックスで最新のキャッシュを探す
+          restore-keys: |
+            urlwatch-db-
 
-      - name: Run urlwatch with static config
+      - name: Run urlwatch
         env:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
-          # 設定ディレクトリを作成
           mkdir -p ~/.config/urlwatch
-
-          # 雛形をコピー
           cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
-
-          # プレースホルダーを環境変数で置き換え
-          sed -i \
-            -e 's|\${URLWATCH_EMAIL_USER}|'"$URLWATCH_EMAIL_USER"'|g' \
-            -e 's|\${URLWATCH_EMAIL_PASS}|'"$URLWATCH_EMAIL_PASS"'|g' \
-            ~/.config/urlwatch/urlwatch.yaml
-
-          # 監視リストをコピー
-          cp urls.yaml ~/.config/urlwatch/urls.yaml
-
-          # 実行（差分あるものだけメール送信）
+          cp urls.yaml     ~/.config/urlwatch/urls.yaml
           urlwatch --config ~/.config/urlwatch/urlwatch.yaml
