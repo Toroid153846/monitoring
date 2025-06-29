@@ -28,24 +28,12 @@ jobs:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
-          # 1) 設定フォルダを作成
+          # 設定ディレクトリ準備
           mkdir -p ~/.config/urlwatch
-          # 2) 監視リストをコピー
-          cp urls.yaml ~/.config/urlwatch/urls.yaml
 
-          # 3) urlwatch.yaml を１行ずつ構築
-          echo 'report:'                                                  > ~/.config/urlwatch/urlwatch.yaml
-          echo '  email:'                                                    >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    enabled: true'                                           >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    keyring: false'                                          >> ~/.config/urlwatch/urlwatch.yaml
-          echo "    from:     \"${URLWATCH_EMAIL_USER}\""                    >> ~/.config/urlwatch/urlwatch.yaml
-          echo "    to:       \"${URLWATCH_EMAIL_USER}\""                    >> ~/.config/urlwatch/urlwatch.yaml
-          echo '    smtp:'                                                   >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      host:      smtp.gmail.com'                             >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      port:      587'                                        >> ~/.config/urlwatch/urlwatch.yaml
-          echo '      starttls:  true'                                       >> ~/.config/urlwatch/urlwatch.yaml
-          echo "      user:      \"${URLWATCH_EMAIL_USER}\""                 >> ~/.config/urlwatch/urlwatch.yaml
-          echo "      password:  \"${URLWATCH_EMAIL_PASS}\""                 >> ~/.config/urlwatch/urlwatch.yaml
+          # 静的ファイルをコピー
+          cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
+          cp urls.yaml     ~/.config/urlwatch/urls.yaml
 
-          # 4) テストレポーターで必ずメール送信を試す
-          urlwatch --test-reporter email
+          # テスト送信（--test-reporter を外せば通常差分時のみ送信）
+          urlwatch --test-reporter email --config ~/.config/urlwatch/urlwatch.yaml

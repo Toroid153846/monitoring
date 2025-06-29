@@ -1,18 +1,14 @@
-report:
+reporters:
   email:
     enabled: true
-    keyring: false            # ← Keyring は使わない
-
-    # 件名テンプレート（任意）
+    keyring: false
     subject: "urlwatch – {count} changes detected"
-
-    # 送信者＝SMTPユーザー（※自分の Gmail アドレスなど）
-    from: "kokorokitano0819@gmail.com"
-    to:   "kokorokitano0819@gmail.com"     # 自分宛だけなら同じで OK
+    from:    "toroid153846@gmail.com"
+    to:      "toroid153846@gmail.com"
 
     smtp:
-      host: smtp.gmail.com
-      port: 587
+      host:     smtp.gmail.com
+      port:     587
       starttls: true
-      user: "kokorokitano0819@gmail.com"   # 送信者と同じアドレスを文字列で
-      password: "${URLWATCH_EMAIL_PASS}"   # ← Secrets から渡す
+      user:     "${URLWATCH_EMAIL_USER}"
+      password: "${URLWATCH_EMAIL_PASS}"
