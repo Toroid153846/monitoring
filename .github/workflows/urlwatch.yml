@@ -125,6 +125,7 @@
 # .github/workflows/urlwatch.yml
 # .github/workflows/urlwatch.yml
 # .github/workflows/urlwatch.yml
+# .github/workflows/urlwatch.yml
 name: urlwatch
 
 on:
@@ -143,43 +144,26 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-
       - name: Install dependencies
         run: python -m pip install --upgrade urlwatch
 
-      - name: Restore existing DB
-        run: |
-          if [ -f db/db.sqlite ]; then
-            mkdir -p ~/.cache/urlwatch
-            cp db/db.sqlite ~/.cache/urlwatch/db.sqlite
-          fi
-
-      - name: Run urlwatch
+      - name: Run urlwatch (using repo DB)
         env:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
-          mkdir -p ~/.config/urlwatch
+          mkdir -p ~/.config/urlwatch db
           cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
           sed -i \
             -e 's|\${URLWATCH_EMAIL_USER}|'"$URLWATCH_EMAIL_USER"'|g' \
             -e 's|\${URLWATCH_EMAIL_PASS}|'"$URLWATCH_EMAIL_PASS"'|g' \
             ~/.config/urlwatch/urlwatch.yaml
           cp urls.yaml ~/.config/urlwatch/urls.yaml
-          urlwatch --config ~/.config/urlwatch/urlwatch.yaml \
-                   --urls   ~/.config/urlwatch/urls.yaml
-
-      - name: Copy DB back into repo
-        run: |
-          mkdir -p db
-          # データベースの実ファイル名を確認してコピー
-          if [ -f ~/.cache/urlwatch/db.sqlite ]; then
-            cp ~/.cache/urlwatch/db.sqlite db/db.sqlite
-          elif ls ~/.cache/urlwatch/db.sqlite* 1> /dev/null 2>&1; then
-            cp ~/.cache/urlwatch/db.sqlite* db/db.sqlite
-          else
-            echo "No urlwatch DB found in ~/.cache/urlwatch"
-          fi
+          # ← ここで --database=db/db.sqlite を指定
+          urlwatch \
+            --config ~/.config/urlwatch/urlwatch.yaml \
+            --urls   ~/.config/urlwatch/urls.yaml \
+            --database db/db.sqlite
 
       - name: Commit and push URLWatch DB
         env:
@@ -187,6 +171,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add db/db.sqlite || echo "db/db.sqlite not tracked"
+          git add db/db.sqlite
           git commit -m "Update urlwatch DB" || echo "Nothing to commit"
           git push
