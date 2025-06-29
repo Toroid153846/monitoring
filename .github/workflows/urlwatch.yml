@@ -124,6 +124,7 @@
 #                    --urls   ~/.config/urlwatch/urls.yaml
 # .github/workflows/urlwatch.yml
 # .github/workflows/urlwatch.yml
+# .github/workflows/urlwatch.yml
 name: urlwatch
 
 on:
@@ -138,17 +139,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # コミット履歴を完全取得
+          fetch-depth: 0
 
       - name: Install dependencies
         run: python -m pip install --upgrade urlwatch
 
       - name: Restore existing DB
-        # もし前回コミットされた db.sqlite3 があれば ~/.cache/urlwatch に戻す
         run: |
-          if [ -f db/db.sqlite3 ]; then
+          if [ -f db/db.sqlite ]; then
             mkdir -p ~/.cache/urlwatch
-            cp db/db.sqlite3 ~/.cache/urlwatch/db.sqlite3
+            cp db/db.sqlite ~/.cache/urlwatch/db.sqlite
           fi
 
       - name: Run urlwatch
@@ -169,7 +169,14 @@ jobs:
       - name: Copy DB back into repo
         run: |
           mkdir -p db
-          cp ~/.cache/urlwatch/db.sqlite3 db/db.sqlite3 || echo "no db yet"
+          # データベースの実ファイル名を確認してコピー
+          if [ -f ~/.cache/urlwatch/db.sqlite ]; then
+            cp ~/.cache/urlwatch/db.sqlite db/db.sqlite
+          elif ls ~/.cache/urlwatch/db.sqlite* 1> /dev/null 2>&1; then
+            cp ~/.cache/urlwatch/db.sqlite* db/db.sqlite
+          else
+            echo "No urlwatch DB found in ~/.cache/urlwatch"
+          fi
 
       - name: Commit and push URLWatch DB
         env:
@@ -177,6 +184,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add db/db.sqlite3
+          git add db/db.sqlite || echo "db/db.sqlite not tracked"
           git commit -m "Update urlwatch DB" || echo "Nothing to commit"
           git push
