@@ -72,4 +72,4 @@ jobs:
           cp urls.yaml ~/.config/urlwatch/urls.yaml
 
           # 実行（差分あるものだけメール送信）
-          urlwatch --config ~/.config/urlwatch/urlwatch.yaml
+          urlwatch --test-reporter email --config ~/.config/urlwatch/urlwatch.yaml
