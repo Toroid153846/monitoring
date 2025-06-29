@@ -29,6 +29,14 @@ jobs:
 
       - name: Run urlwatch
         env:
-          URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
-          URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
-        run: urlwatch
+        URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
+        URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
+      run: |
+        # 設定フォルダを用意
+        mkdir -p ~/.config/urlwatch
+        # リポジトリの設定ファイルをコピー
+        cp urls.yaml ~/.config/urlwatch/urls.yaml
+        cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
+        # 実行
+        urlwatch
+
