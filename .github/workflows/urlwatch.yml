@@ -163,7 +163,7 @@ jobs:
           urlwatch \
             --config ~/.config/urlwatch/urlwatch.yaml \
             --urls   ~/.config/urlwatch/urls.yaml \
-            --database db/db.sqlite
+            --cache  db/db.sqlite
 
       - name: Commit and push URLWatch DB
         env:
