@@ -1,4 +1,4 @@
-reporters:
+report:
   email:
     enabled: true
     keyring: false

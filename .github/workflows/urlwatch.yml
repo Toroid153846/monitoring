@@ -28,12 +28,8 @@ jobs:
           URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
           URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
-          # 設定ディレクトリ準備
           mkdir -p ~/.config/urlwatch
-
-          # 静的ファイルをコピー
           cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
           cp urls.yaml     ~/.config/urlwatch/urls.yaml
-
-          # テスト送信（--test-reporter を外せば通常差分時のみ送信）
-          urlwatch --test-reporter email --config ~/.config/urlwatch/urlwatch.yaml
+          urlwatch --test-reporter email \
+            --config ~/.config/urlwatch/urlwatch.yaml
