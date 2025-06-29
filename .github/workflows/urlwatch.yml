@@ -1,0 +1,34 @@
+name: urlwatch
+
+on:
+  schedule:                # 30 分おきに実行（UTC）
+    - cron: '*/30 * * * *'
+  workflow_dispatch:       # 手動実行ボタン
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install urlwatch & Playwright
+        run: |
+          python -m pip install --upgrade urlwatch playwright
+          playwright install chromium      # JS が不要ならこの行は削除可
+
+      - uses: actions/cache@v4            # 差分 DB をキャッシュ
+        with:
+          path: ~/.cache/urlwatch
+          key: db-${{ github.run_id }}
+
+      - name: Run urlwatch
+        env:
+          URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
+          URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
+        run: urlwatch --quiet
