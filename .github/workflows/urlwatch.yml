@@ -20,6 +20,7 @@ jobs:
       - name: Install urlwatch & Playwright
         run: |
           python -m pip install --upgrade urlwatch playwright
+          python -m pip install --no-cache-dir keyrings.alt
           playwright install chromium      # JS が不要ならこの行は削除可
 
       - uses: actions/cache@v4            # 差分 DB をキャッシュ
