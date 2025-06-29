@@ -11,8 +11,8 @@ url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 # ドキュメント3
 kind: url
 name: "google"
-url:  "https://www.google.com/"
+url:  "https://www.google.com/?gl=us&hl=jp&gws_rd=cr&pws=0"
 filter:
   - html2text
-  - re.findall: '(?s)ストア(.*?)画像'
+  - re.findall: '(?s)Google 検索は次の言語でもご利用いただけます(.*?)検索の仕組み'
   - strip
