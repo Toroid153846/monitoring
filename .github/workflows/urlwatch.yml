@@ -93,11 +93,9 @@ jobs:
       - name: Cache urlwatch DB
         uses: actions/cache@v4
         with:
-          # URLWatch の差分DB を丸ごとキャッシュ
-          path: ~/.cache/urlwatch
-          # キャッシュキーは固定値に runner.os を付加
+          # ~ が展開されないので必ず $HOME を使います
+          path: ${{ env.HOME }}/.cache/urlwatch
           key: urlwatch-db-${{ runner.os }}
-          # 同じプレフィックスで最新のキャッシュを探す
           restore-keys: |
             urlwatch-db-
 
@@ -122,4 +120,5 @@ jobs:
           cp urls.yaml ~/.config/urlwatch/urls.yaml
 
           # 差分あるものだけメール送信
-          urlwatch --config ~/.config/urlwatch/urlwatch.yaml
+          urlwatch --config ~/.config/urlwatch/urlwatch.yaml \
+                   --urls   ~/.config/urlwatch/urls.yaml
