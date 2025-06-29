@@ -16,8 +16,8 @@ report:
   email:
     enabled: true
     method: smtp
-    from:    "${URLWATCH_EMAIL_USER}"
-    to:      "${URLWATCH_EMAIL_USER}"
+    from:    "toroid153846@gmail.com"
+    to:      "toroid153846@gmail.com"
 
     smtp:
       host:     smtp.gmail.com
