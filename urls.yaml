@@ -1,0 +1,18 @@
+# 1件目
+- name: "研究室サイト 更新情報"
+  url:  "https://example.t.u-tokyo.ac.jp/news.html"
+  # オプションでページ内の一部分だけを抽出
+  filter:
+    - css:      { selector: "ul.news" }
+    - html2text
+    - strip
+
+# 2件目
+- name: "ブログトップ"
+  url:  "https://blog.example.com/"
+
+# 3件目（テスト用・絶えず変わるURL）
+- name: "時計APIテスト"
+  url:  "https://worldtimeapi.org/api/timezone/Etc/UTC.txt"
+  filter:
+    - regex: "datetime: (.*)"
