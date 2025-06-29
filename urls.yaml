@@ -2,10 +2,6 @@
 kind: url
 name: "Jump+"
 url:  "https://shonenjumpplus.com/"
-filter:
-  - css:      { selector: "ul.news" }
-  - html2text
-  - strip
 ---
 # ドキュメント2
 kind: url
@@ -16,3 +12,13 @@ url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 kind: url
 name: "google"
 url:  "https://www.google.com/"
+filter:
+  # いちど全体をプレーンテキスト化したい場合
+  - html2text
+
+  # PCRE／DOTALL モードで START…END の間を抜き出す
+  # grep の -P は Perl 正規表現、
+  # -z は入力全体を1バッファとして扱うオプションです。
+  - grep: -Pzo "(?s)(?<=Googleについて).*?(?=ストア)"
+  # 最後に strip で前後空白を削除
+  - strip
