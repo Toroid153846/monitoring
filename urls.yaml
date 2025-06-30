@@ -1,12 +1,31 @@
+# ---
+# kind: url
+# name: "はてなアンテナ"
+# url:  "https://a.hatena.ne.jp/toroid153846/checklist"
+# filter: []
+# ---
+# kind: url
+# name: "崩壊世界の魔法杖職人"
+# url:  "https://ncode.syosetu.com/n8281jr/?p=2"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)作者：(.*?)この作品をシェア'
 ---
 kind: url
-name: "はてなアンテナ"
+name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://a.hatena.ne.jp/toroid153846/checklist"
 filter: []
 ---
 kind: url
-name: "崩壊世界の魔法杖職人"
+name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://ncode.syosetu.com/n8281jr/?p=2"
 filter:
   - html2text
-  - re.findall: '(?s)作者：(.*?)注意'
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+# 追加したい URL をいくつでも
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n7091kq/"
+filter:
+  - html2text
