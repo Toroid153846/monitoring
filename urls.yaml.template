@@ -247,6 +247,7 @@ url:  "https://kakuyomu.jp/works/1177354054885971051"
 filter:
   - html2text
   - re.findall: '(?s)詳細(.*?)ギフトを贈る'
+# カクヨムのテスト用
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
@@ -287,6 +288,14 @@ filter:
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://www.comic-valkyrie.com/goy/"
+filter:
+  - html2text
+  - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
+# valkyrieのテスト用
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.comic-valkyrie.com/maouno/"
 filter:
   - html2text
   - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
