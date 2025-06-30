@@ -1,41 +1,37 @@
-#!/usr/bin/env python3
-import yaml
-import requests
+import yaml, requests
 from bs4 import BeautifulSoup
 
-TEMPLATE = "urls.yaml.template"
-OUTPUT   = "urls.yaml"
 PLACEHOLDER = "{{TITLE_PLACEHOLDER}}"
 
 def fetch_title(url, timeout=10):
-    """URL を叩いて <title> を返す。なければ空文字。"""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+    }
     try:
-        resp = requests.get(url, timeout=timeout)
+        resp = requests.get(url, headers=headers, timeout=timeout)
+        print(f"[DEBUG] {url} → status {resp.status_code}")
         resp.raise_for_status()
+        # HTMLが返ってきているか先頭だけ確認
+        print(f"[DEBUG] html[0:200]: {resp.text[:200]!r}")
         soup = BeautifulSoup(resp.text, "html.parser")
-        return (soup.title.string or "").strip()
+        title = (soup.title.string or "").strip()
+        print(f"[DEBUG] extracted title: {title!r}")
+        return title or ""
     except Exception as e:
-        # 失敗したら placeholder のままにしておく
-        print(f"Warning: {url} のタイトル取得でエラー: {e}")
+        print(f"[WARNING] {url} タイトル取得失敗: {e}")
         return ""
 
 def main():
-    # テンプレートをマルチドキュメントで読み込む
-    with open(TEMPLATE, encoding="utf-8") as fp:
+    with open("urlwatch.yaml.template", encoding="utf-8") as fp:
         docs = list(yaml.safe_load_all(fp))
 
     for doc in docs:
-        # プレースホルダとして記載のあるものだけ置き換え
         if isinstance(doc, dict) and doc.get("name") == PLACEHOLDER:
-            url = doc.get("url")
+            url = doc["url"]
             title = fetch_title(url)
-            if title:
-                doc["name"] = title
-            else:
-                doc["name"] = url  # タイトル取得失敗時は URL を name に
+            doc["name"] = title if title else url
 
-    # 実ファイルを書き出し
-    with open(OUTPUT, "w", encoding="utf-8") as fp:
+    with open("urlwatch.yaml", "w", encoding="utf-8") as fp:
         yaml.dump_all(docs, fp, allow_unicode=True)
 
 if __name__ == "__main__":
