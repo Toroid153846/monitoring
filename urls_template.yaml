@@ -356,7 +356,66 @@ url:  "https://www.ganganonline.com/title/1024"
 filter:
   - html2text
   - re.findall: '(?s)チャプター(.*?)作品インフォメーション'
+# ヤンマガWebのテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "ヤンマガWebのURL"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)必要ポイント(.*?)「全話無料」対象作品はコチラ!!!'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://yanmaga.jp/comics/%E3%83%AC%E3%83%99%E3%83%AB%EF%BC%91%E3%81%A0%E3%81%91%E3%81%A9%E3%83%A6%E3%83%8B%E3%83%BC%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%AB%E3%81%A7%E6%9C%80%E5%BC%B7%E3%81%A7%E3%81%99"
+filter:
+  - html2text
+  - re.findall: '(?s)必要ポイント(.*?)「全話無料」対象作品はコチラ!!!'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://yanmaga.jp/comics/%E8%82%A1%E9%96%93%E7%84%A1%E5%8F%8C%E5%AB%8C%E3%82%8F%E3%82%8C%E5%8B%87%E8%80%85%E3%81%AF%E9%AD%94%E6%97%8F%E3%81%AB%E6%84%9B%E3%81%95%E3%82%8C%E3%82%8B"
+filter:
+  - html2text
+  - re.findall: '(?s)必要ポイント(.*?)「全話無料」対象作品はコチラ!!!'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://yanmaga.jp/comics/%E7%84%A1%E4%BF%AE%E6%AD%A3%E7%89%88%E6%99%82%E9%96%93%E5%81%9C%E6%AD%A2%E5%8B%87%E8%80%85%E4%BD%99%E5%91%BD%EF%BC%93%E6%97%A5%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%98%E3%82%83%E4%B8%96%E7%95%8C%E3%82%92%E6%95%91%E3%81%86%E3%81%AB%E3%81%AF%E7%9F%AD%E3%81%99%E3%81%8E%E3%82%8B"
+filter:
+  - html2text
+  - re.findall: '(?s)必要ポイント(.*?)「全話無料」対象作品はコチラ!!!'
 
+# にこにこ漫画用のテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "URL"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)最新話を読む(.*?)その他マンガ'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://manga.nicovideo.jp/comic/58894"
+filter:
+  - html2text
+  - re.findall: '(?s)最新話を読む(.*?)その他マンガ'
+# firecross用のテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "firecrossのURL"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)1話ずつ読む(.*?)単行本で読む'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://firecross.jp/ebook/series/286"
+filter:
+  - html2text
+  - re.findall: '(?s)1話ずつ読む(.*?)単行本で読む'
 # コピー用
 # ---
 # kind: url
