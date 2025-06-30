@@ -22,7 +22,7 @@ def fetch_title(url, timeout=10):
         return ""
 
 def main():
-    with open("urls.yaml.template", encoding="utf-8") as fp:
+    with open("urls_template.yaml", encoding="utf-8") as fp:
         docs = list(yaml.safe_load_all(fp))
 
     for doc in docs:

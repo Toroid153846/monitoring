@@ -247,14 +247,6 @@ url:  "https://kakuyomu.jp/works/1177354054885971051"
 filter:
   - html2text
   - re.findall: '(?s)詳細(.*?)ギフトを贈る'
-# カクヨムのテスト用
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}カクヨムのテスト用"
-url:  "https://kakuyomu.jp/works/16816700428814943571"
-filter:
-  - html2text
-  - re.findall: '(?s)詳細(.*?)ギフトを贈る'
 # ヴァルキリーのテンプレート
 # ---
 # kind: url
@@ -318,6 +310,13 @@ filter:
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://gaugau.futabanet.jp/list/work/5dd4fcf177656139da050000"
+filter:
+  - html2text
+  - re.findall: '(?s)無料配信中の漫画(.*?)ランキング'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://gaugau.futabanet.jp/list/work/6020e085776561374d020000"
 filter:
   - html2text
   - re.findall: '(?s)無料配信中の漫画(.*?)ランキング'
