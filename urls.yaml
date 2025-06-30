@@ -9,4 +9,4 @@ name: "崩壊世界の魔法杖職人"
 url:  "https://ncode.syosetu.com/n8281jr/?p=2"
 filter:
   - html2text
-  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+  - re.findall: '(?s)作者：(.*?)注意'
