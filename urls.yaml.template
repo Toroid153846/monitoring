@@ -294,7 +294,7 @@ filter:
 # valkyrieのテスト用
 ---
 kind: url
-name: "{{TITLE_PLACEHOLDER}}"
+name: "{{TITLE_PLACEHOLDER}}valkyrieのテスト用"
 url:  "https://www.comic-valkyrie.com/maouno/"
 filter:
   - html2text
