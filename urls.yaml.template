@@ -1,3 +1,12 @@
+# 全体のテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "URL"# 同じURLがあるとERRORになる場合がある
+# filter:
+#   - html2text
+#   - re.findall: '(?s)START(.*?)END'
+
 # 小説家になろう用のテンプレート
 # ---
 # kind: url
