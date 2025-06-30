@@ -320,6 +320,42 @@ url:  "https://gaugau.futabanet.jp/list/work/6020e085776561374d020000"
 filter:
   - html2text
   - re.findall: '(?s)無料配信中の漫画(.*?)ランキング'
+# ガンガンOnlineのテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "ガンガンOnlineURL"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)チャプター(.*?)作品インフォメーション'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.ganganonline.com/title/72"
+filter:
+  - html2text
+  - re.findall: '(?s)チャプター(.*?)作品インフォメーション'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.ganganonline.com/title/52"
+filter:
+  - html2text
+  - re.findall: '(?s)チャプター(.*?)作品インフォメーション'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.ganganonline.com/title/36"
+filter:
+  - html2text
+  - re.findall: '(?s)チャプター(.*?)作品インフォメーション'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.ganganonline.com/title/1024"
+filter:
+  - html2text
+  - re.findall: '(?s)チャプター(.*?)作品インフォメーション'
 
 # コピー用
 # ---
