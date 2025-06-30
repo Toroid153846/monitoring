@@ -254,6 +254,42 @@ url:  "https://kakuyomu.jp/works/16816700428814943571"
 filter:
   - html2text
   - re.findall: '(?s)詳細(.*?)ギフトを贈る'
+# ヴァルキリーのテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "ヴァルキリーのURL"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.comic-valkyrie.com/rengokujima/"
+filter:
+  - html2text
+  - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.comic-valkyrie.com/teisou/"
+filter:
+  - html2text
+  - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.comic-valkyrie.com/yusyasama/"
+filter:
+  - html2text
+  - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.comic-valkyrie.com/goy/"
+filter:
+  - html2text
+  - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
 
 # コピー用
 # ---
