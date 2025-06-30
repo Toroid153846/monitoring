@@ -3,8 +3,8 @@ import yaml
 import requests
 from bs4 import BeautifulSoup
 
-TEMPLATE = "urlwatch.yaml.template"
-OUTPUT   = "urlwatch.yaml"
+TEMPLATE = "urls.yaml.template"
+OUTPUT   = "urls.yaml"
 PLACEHOLDER = "{{TITLE_PLACEHOLDER}}"
 
 def fetch_title(url, timeout=10):
