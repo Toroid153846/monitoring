@@ -22,7 +22,7 @@ def fetch_title(url, timeout=10):
         return ""
 
 def main():
-    with open("urlwatch.yaml.template", encoding="utf-8") as fp:
+    with open("urls.yaml.template", encoding="utf-8") as fp:
         docs = list(yaml.safe_load_all(fp))
 
     for doc in docs:
@@ -31,7 +31,7 @@ def main():
             title = fetch_title(url)
             doc["name"] = title if title else url
 
-    with open("urlwatch.yaml", "w", encoding="utf-8") as fp:
+    with open("urls.yaml", "w", encoding="utf-8") as fp:
         yaml.dump_all(docs, fp, allow_unicode=True)
 
 if __name__ == "__main__":
