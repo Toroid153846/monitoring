@@ -247,6 +247,13 @@ url:  "https://kakuyomu.jp/works/1177354054885971051"
 filter:
   - html2text
   - re.findall: '(?s)詳細(.*?)ギフトを贈る'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://kakuyomu.jp/works/16816700428814943571"
+filter:
+  - html2text
+  - re.findall: '(?s)詳細(.*?)ギフトを贈る'
 
 # コピー用
 # ---
