@@ -1,20 +1,11 @@
+# この区画を追加してください
 # ---
 # kind: url
-# name: "はてなアンテナ"
-# url:  "https://a.hatena.ne.jp/toroid153846/checklist"
-# filter: []
-# ---
-# kind: url
-# name: "崩壊世界の魔法杖職人"
-# url:  "https://ncode.syosetu.com/n8281jr/?p=2"
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "なろうのURLを入力してください(ただし、最新話の表示されるページ)"
 # filter:
 #   - html2text
 #   - re.findall: '(?s)作者：(.*?)この作品をシェア'
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://a.hatena.ne.jp/toroid153846/checklist"
-filter: []
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
@@ -23,9 +14,79 @@ filter:
   - html2text
   - re.findall: '(?s)作者：(.*?)この作品をシェア'
 ---
-# 追加したい URL をいくつでも
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://ncode.syosetu.com/n7091kq/"
+url:  "https://ncode.syosetu.com/n8418ff/"
 filter:
   - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n5851di/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n0611em/?p=3"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n7429fo/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n1996ca/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n2589ii/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n0611em/?p=3"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n9525fd/?p=4"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n4136hf/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n8492hk/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n4890hg/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
