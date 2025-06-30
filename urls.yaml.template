@@ -299,6 +299,28 @@ url:  "https://www.comic-valkyrie.com/maouno/"
 filter:
   - html2text
   - re.findall: '(?s)最新話(.*?)この作品に対するご感想はこちらから'
+# がうがうモンスター用のテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "がうがうモンスターのURL"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)無料配信中の漫画(.*?)ランキング'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://gaugau.futabanet.jp/list/work/5e76364f776561229d020000"
+filter:
+  - html2text
+  - re.findall: '(?s)無料配信中の漫画(.*?)ランキング'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://gaugau.futabanet.jp/list/work/5dd4fcf177656139da050000"
+filter:
+  - html2text
+  - re.findall: '(?s)無料配信中の漫画(.*?)ランキング'
 
 # コピー用
 # ---
