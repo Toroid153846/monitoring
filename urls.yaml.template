@@ -83,3 +83,136 @@ url:  "https://ncode.syosetu.com/n4890hg/"
 filter:
   - html2text
   - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n7564ha/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n9736dt/?p=3"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n9493gl/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n9271fe/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n9074ff/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n7209fi/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n1004ek/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n2687fa/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n8401do/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n1762eo/"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n4532en/?p=6"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n1214hi/?p=2"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n5871dy/?p=2"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n7942ff/?p=2"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n9846ee/?p=5"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n2494fq/?p=4"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n8030gu/?p=2"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n1592db/?p=5"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "なろうのURLを入力してください(ただし、最新話の表示されるページ)"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)作者：(.*?)この作品をシェア'
