@@ -1,4 +1,4 @@
-# この区画を追加してください
+# 小説家になろう用のテンプレート
 # ---
 # kind: url
 # name: "{{TITLE_PLACEHOLDER}}"
@@ -216,11 +216,34 @@ url:  "https://ncode.syosetu.com/n1393ew/"
 filter:
   - html2text
   - re.findall: '(?s)作者：(.*?)この作品をシェア'
+# カクヨム用のテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "カクヨムのURL"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)詳細(.*?)ギフトを贈る'# 最終更新時間のみの表示なので注意。
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://kakuyomu.jp/works/16817330656558232952"
+filter:
+  - html2text
+  - re.findall: '(?s)詳細(.*?)ギフトを贈る'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://kakuyomu.jp/works/1177354054885971051"
+filter:
+  - html2text
+  - re.findall: '(?s)詳細(.*?)ギフトを贈る'
+
 # コピー用
 # ---
 # kind: url
 # name: "{{TITLE_PLACEHOLDER}}"
-# url:  "なろうのURLを入力してください(ただし、最新話の表示されるページ)"
+# url:  "URL"
 # filter:
 #   - html2text
-#   - re.findall: '(?s)作者：(.*?)この作品をシェア'
+#   - re.findall: '(?s)START(.*?)END'
