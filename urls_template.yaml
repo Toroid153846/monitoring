@@ -5,6 +5,7 @@
 # url:  "URL"# 同じURLがあるとERRORになる場合がある
 # filter:
 #   - html2text
+#   - grepi: '無視したい行に含まれる文字列'
 #   - re.findall: '(?s)START(.*?)END'
 
 # 小説家になろう用のテンプレート
@@ -14,6 +15,7 @@
 # url:  "なろうのURLを入力してください(ただし、最新話の表示されるページ)"
 # filter:
 #   - html2text
+#   - grepi: '無視したい行に含まれる文字列'# まああってもなくてもいい
 #   - re.findall: '(?s)作者：(.*?)この作品をシェア'
 ---
 kind: url
