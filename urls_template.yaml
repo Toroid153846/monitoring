@@ -22,6 +22,7 @@ url:  "https://ncode.syosetu.com/n8281jr/?p=2"
 filter:
   - html2text
   - re.findall: '(?s)作者：(.*?)この作品をシェア'
+  - shell: ["grep", "-v", "（改）"]
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
