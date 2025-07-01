@@ -7,7 +7,30 @@
 #   - html2text
 #   - grepi: '無視したい行に含まれる文字列'
 #   - re.findall: '(?s)START(.*?)END'
-
+---
+kind: url
+name: "東大理物"
+url:  "https://www.phys.s.u-tokyo.ac.jp/lp/graduate/"# 同じURLがあるとERRORになる場合がある
+filter:
+  - html2text
+---
+kind: url
+name: "東大相関基礎"
+url:  "https://dbs.c.u-tokyo.ac.jp/exam/guide/"# 同じURLがあるとERRORになる場合がある
+filter:
+  - html2text
+---
+kind: url
+name: "慶応大理物"
+url:  "https://www.st.keio.ac.jp/admissions/rikou-m.html"# 同じURLがあるとERRORになる場合がある
+filter:
+  - html2text
+---
+kind: url
+name: "理科大理物"
+url:  "https://www.tus.ac.jp/admissions/university/guideline/graduateschool/"# 同じURLがあるとERRORになる場合がある
+filter:
+  - html2text
 # 小説家になろう用のテンプレート
 # ---
 # kind: url
