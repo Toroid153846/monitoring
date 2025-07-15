@@ -251,6 +251,13 @@ url:  "https://ncode.syosetu.com/n1393ew/"
 filter:
   - html2text
   - re.findall: '(?s)作者：(.*?)この作品をシェア'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ncode.syosetu.com/n1290ff/?p=3"
+filter:
+  - html2text
+  - re.findall: '(?s)作者：(.*?)この作品をシェア'
 # カクヨム用のテンプレート
 # ---
 # kind: url
