@@ -441,6 +441,85 @@ url:  "https://firecross.jp/ebook/series/286"
 filter:
   - html2text
   - re.findall: '(?s)1話ずつ読む(.*?)単行本で読む'
+# アニメ通知用のテンプレート
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "公式アニメサイトのnewsのURL"
+# filter:
+#   - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://frieren-anime.jp/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://mushokutensei.jp/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://shadow-garden.jp/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://ichigoproduction.com/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://konofuka.com/news"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://kamikatsu-anime.jp/newsinfo/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://munounanana.com/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://zom100.com/news.html"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://chainsawman.dog/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://sololeveling-anime.net/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://dmdp-anime.jp/news/"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://rokka-anime.jp/index.php/category/news/"
+filter:
+  - html2text
 # コピー用
 # ---
 # kind: url
