@@ -53,3 +53,37 @@ jobs:
           git add db/db.sqlite
           git commit -m "Update urlwatch DB" || echo "Nothing to commit"
           git push origin main
+
+      - name: Install Python deps
+        run: |
+          pip install pyyaml requests beautifulsoup4
+      - name: Install Playwright (chromium only)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install playwright
+          playwright install chromium
+      - name: Fetch pages from urls_template (requests first, then Playwright if needed)
+        run: |
+          python scripts/fetch_from_template.py
+      - name: Generate urlwatch.yaml from template
+        run: python scripts/update_yaml.py
+      - name: Replace remote NEWS URLs with local snapshots
+        run: python scripts/replace_urls_with_snapshots.py
+      - name: Install urlwatch
+        run: python -m pip install --upgrade urlwatch
+      - name: Run urlwatch (using repo DB)
+        env:
+          URLWATCH_EMAIL_USER: ${{ secrets.MAIL_USER }}
+          URLWATCH_EMAIL_PASS: ${{ secrets.MAIL_PASS }}
+        run: |
+          mkdir -p ~/.config/urlwatch db
+          cp urlwatch.yaml ~/.config/urlwatch/urlwatch.yaml
+          sed -i \
+            -e 's|\${URLWATCH_EMAIL_USER}|'"$URLWATCH_EMAIL_USER"'|g' \
+            -e 's|\${URLWATCH_EMAIL_PASS}|'"$URLWATCH_EMAIL_PASS"'|g' \
+            ~/.config/urlwatch/urlwatch.yaml
+          cp urls.yaml ~/.config/urlwatch/urls.yaml
+          urlwatch \
+            --config ~/.config/urlwatch/urlwatch.yaml \
+            --urls   ~/.config/urlwatch/urls.yaml \
+            --cache  db/db.sqlite
