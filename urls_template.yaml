@@ -451,18 +451,6 @@ filter:
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://frieren-anime.jp/news/"
-filter:
-  - html2text
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://mushokutensei.jp/news/"
-filter:
-  - html2text
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://shadow-garden.jp/news/"
 filter:
   - html2text
