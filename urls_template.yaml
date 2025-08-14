@@ -451,20 +451,6 @@ filter:
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://frieren-anime.jp/news/"
-fetch: playwright     # ← ここを指定すると最初から Playwright で取得する
-filter:
-  - html2text
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://mushokutensei.jp/news/"
-# fetch を書かなければ auto（まず requests を試し、失敗したら Playwright）
-filter:
-  - html2text
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://shadow-garden.jp/news/"
 filter:
   - html2text
