@@ -458,7 +458,7 @@ filter:
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://example.com/somepage"
+url:  "https://mushokutensei.jp/news/"
 # fetch を書かなければ auto（まず requests を試し、失敗したら Playwright）
 filter:
   - html2text
