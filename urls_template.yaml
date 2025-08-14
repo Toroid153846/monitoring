@@ -451,6 +451,26 @@ filter:
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://frieren-anime.jp/news/"
+headers:
+  User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+  Referer: "https://www.google.com/"
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://mushokutensei.jp/news/"
+headers:
+  User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+  Referer: "https://www.google.com/"
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+filter:
+  - html2text
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://shadow-garden.jp/news/"
 filter:
   - html2text
