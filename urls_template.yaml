@@ -456,14 +456,8 @@ filter:
   - html2text
 ---
 kind: url
-name: "{{TITLE_PLACEHOLDER}}"
+name: "NEWS -アニメ『【推しの子】』公式サイト-"
 url:  "https://ichigoproduction.com/news/"
-filter:
-  - html2text
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://konofuka.com/news"
 filter:
   - html2text
 ---
@@ -474,13 +468,13 @@ filter:
   - html2text
 ---
 kind: url
-name: "{{TITLE_PLACEHOLDER}}"
+name: "NEWS｜TVアニメ「無能なナナ」公式サイト"
 url:  "https://munounanana.com/news/"
 filter:
   - html2text
 ---
 kind: url
-name: "{{TITLE_PLACEHOLDER}}"
+name: "NEWS｜TVアニメ「ゾン100～ゾンビになるまでにしたい100のこと～」公式サイト"
 url:  "https://zom100.com/news.html"
 filter:
   - html2text
@@ -492,13 +486,13 @@ filter:
   - html2text
 ---
 kind: url
-name: "{{TITLE_PLACEHOLDER}}"
+name: "NEWS | TVアニメ「俺だけレベルアップな件」公式サイト"
 url:  "https://sololeveling-anime.net/news/"
 filter:
   - html2text
 ---
 kind: url
-name: "{{TITLE_PLACEHOLDER}}"
+name: "NEWS｜TVアニメ「デッドマウント・デスプレイ」公式サイト"
 url:  "https://dmdp-anime.jp/news/"
 filter:
   - html2text
