@@ -434,13 +434,13 @@ filter:
 # filter:
 #   - html2text
 #   - re.findall: '(?s)1話ずつ読む(.*?)単行本で読む'
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://firecross.jp/ebook/series/286"
-filter:
-  - html2text
-  - re.findall: '(?s)1話ずつ読む(.*?)単行本で読む'
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "https://firecross.jp/ebook/series/286"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)1話ずつ読む(.*?)単行本で読む'
 # アニメ通知用のテンプレート
 # ---
 # kind: url
