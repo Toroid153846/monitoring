@@ -27,7 +27,7 @@ filter:
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://ncode.syosetu.com/n8418ff/"
+url:  "https://ncode.syosetu.com/n8418ff/?p=2"
 filter:
   - html2text
   - re.findall: '(?s)作者：(.*?)この作品をブックマークに登録している人はこんな作品も読んでいます'
