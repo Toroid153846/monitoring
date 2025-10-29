@@ -402,14 +402,14 @@ filter:
 # url:  "URL"
 # filter:
 #   - html2text
-#   - re.findall: '(?s)移動(.*?)応援コメント'
+#   - re.findall: '(?s)エピソード一覧(.*?)応援コメント'
 ---
 kind: url
 name: "{{TITLE_PLACEHOLDER}}"
 url:  "https://www.manga-up.com/titles/222"
 filter:
   - html2text
-  - re.findall: '(?s)移動(.*?)応援コメント'
+  - re.findall: '(?s)エピソード一覧(.*?)応援コメント'
 # firecross用のテンプレート
 # ---
 # kind: url
