@@ -403,13 +403,13 @@ filter:
 # filter:
 #   - html2text
 #   - re.findall: '(?s)エピソード一覧(.*?)応援コメント'
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://www.manga-up.com/titles/222"
-filter:
-  - html2text
-  - re.findall: '(?s)次回の新チャプター追加(.*?)予定です'
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "https://www.manga-up.com/titles/222"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)次回の新チャプター追加(.*?)予定です'
 # firecross用のテンプレート
 # ---
 # kind: url
