@@ -235,20 +235,20 @@ filter:
 # filter:
 #   - html2text
 #   - re.findall: '(?s)詳細(.*?)ギフトを贈る'# 最終更新時間のみの表示なので注意。
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://kakuyomu.jp/works/16817330656558232952"
-filter:
-  - html2text
-  - re.findall: '(?s)詳細(.*?)ギフトを贈る'
----
-kind: url
-name: "{{TITLE_PLACEHOLDER}}"
-url:  "https://kakuyomu.jp/works/1177354054885971051"
-filter:
-  - html2text
-  - re.findall: '(?s)詳細(.*?)ギフトを贈る'
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "https://kakuyomu.jp/works/16817330656558232952"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)詳細(.*?)ギフトを贈る'
+# ---
+# kind: url
+# name: "{{TITLE_PLACEHOLDER}}"
+# url:  "https://kakuyomu.jp/works/1177354054885971051"
+# filter:
+#   - html2text
+#   - re.findall: '(?s)詳細(.*?)ギフトを贈る'
 # ヴァルキリーのテンプレート
 # ---
 # kind: url
@@ -403,13 +403,13 @@ filter:
 # filter:
 #   - html2text
 #   - re.findall: '(?s)エピソード一覧(.*?)応援コメント'
-# ---
-# kind: url
-# name: "{{TITLE_PLACEHOLDER}}"
-# url:  "https://www.manga-up.com/titles/222"
-# filter:
-#   - html2text
-#   - re.findall: '(?s)次回の新チャプター追加(.*?)予定です'
+---
+kind: url
+name: "{{TITLE_PLACEHOLDER}}"
+url:  "https://www.manga-up.com/titles/222"
+filter:
+  - html2text
+  - re.findall: '(?s)次回の新チャプター追加(.*?)予定です'
 # firecross用のテンプレート
 # ---
 # kind: url
